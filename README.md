@@ -40,3 +40,33 @@ I implemented an IAM Role to provide the EC2 instances with secure access to AWS
 
 ![IAM Trust Policy](images/phase4_1.PNG)
 ![IAM Permissions Summary](images/phase4_2.PNG)
+## Phase 5: High Availability & Load Balancing
+In this phase, I implemented the compute layer of the UniEvent platform. The goal was to ensure the application is highly available and can handle fluctuating student traffic during event registrations.
+
+### 1. Standardized Deployment (Launch Template)
+I created an EC2 Launch Template to serve as a consistent blueprint for all application servers. 
+* **AMI**: Amazon Linux 2023 (Free Tier Optimized).
+* **Instance Type**: t3.micro.
+* **Security & Permissions**: Attached the `UniEvent-S3-Role` for secure access to event posters in S3 and assigned a custom Security Group to restrict traffic to HTTP (Port 80) and SSH (Port 22).
+
+![Launch Template Success](images/Launch_Template_Summary.PNG)
+
+### 2. Traffic Distribution (Application Load Balancer)
+An **Application Load Balancer (ALB)** was deployed in the public subnets. This acts as the "front door" for the application, receiving internet traffic and distributing it to the backend instances.
+* **Scheme**: Internet-facing.
+* **Health Checks**: Configured to monitor instance health; if a server stops responding, the ALB automatically stops sending traffic to it.
+
+### 3. Elasticity and Self-Healing (Auto Scaling)
+I configured an **Auto Scaling Group (ASG)** to manage the server cluster across two Availability Zones (**eu-north-1a** and **eu-north-1b**).
+* **Capacity Settings**: 
+    - Desired: 2 (To ensure fault tolerance).
+    - Minimum: 1 (Baseline availability).
+    - Maximum: 3 (Scalability for peak demand).
+* **Self-Healing**: If an instance fails, the ASG automatically launches a replacement to maintain the desired capacity of 2.
+
+![ASG Configuration](images/phase5_2.PNG)
+
+### 4. Verification of Live Infrastructure
+The following image confirms that the Auto Scaling Group has successfully provisioned two healthy instances across different availability zones, fulfilling the high-availability requirement.
+
+![Running Instances Proof](images/phase5_3.png)
