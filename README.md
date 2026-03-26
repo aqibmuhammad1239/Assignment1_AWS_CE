@@ -31,3 +31,12 @@ I have configured an Amazon S3 bucket to securely store university event posters
 * **Storage Logic**: The bucket is prepared to receive image uploads from the private EC2 instances via the S3 Gateway Endpoint.
 
 ![S3 Bucket Creation](images/S3_Bucket_Setup.PNG)
+## Phase 4: Identity & Access Management (IAM)
+I implemented an IAM Role to provide the EC2 instances with secure access to AWS services without hardcoding credentials.
+
+### Security Configuration
+* **Trust Policy**: Configured to allow only the `ec2.amazonaws.com` service to assume this role.
+* **Permissions**: Attached `AmazonS3FullAccess` for event media storage and `SecretsManagerReadWrite` for secure API key management.
+
+![IAM Trust Policy](images/phase4_1.PNG)
+![IAM Permissions Summary](images/phase4_2.PNG)
