@@ -21,4 +21,4 @@ I verified the API functionality using a Python script (`fetch_events.py`) which
 * [cite_start]**S3 Gateway Endpoint**: I implemented an S3 Gateway endpoint to allow private, secure media uploads to S3 without traversing the public internet[cite: 16, 21].
 
 ### VPC Resource Map
-![VPC Resource Map](images/VPC_Resource_Map.png)
+![VPC Resource Map](images/VPC_Resource_Map.PNG)
