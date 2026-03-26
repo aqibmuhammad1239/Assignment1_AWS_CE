@@ -30,4 +30,4 @@ I have configured an Amazon S3 bucket to securely store university event posters
 * **Access Control**: ACLs are disabled to enforce modern, policy-based access management.
 * **Storage Logic**: The bucket is prepared to receive image uploads from the private EC2 instances via the S3 Gateway Endpoint.
 
-![S3 Bucket Creation](images/S3_Bucket_Created.PNG)
+![S3 Bucket Creation](images/S3_Bucket_Setup.PNG)
