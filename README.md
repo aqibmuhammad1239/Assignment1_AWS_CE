@@ -69,4 +69,4 @@ I configured an **Auto Scaling Group (ASG)** to manage the server cluster across
 ### 4. Verification of Live Infrastructure
 The following image confirms that the Auto Scaling Group has successfully provisioned two healthy instances across different availability zones, fulfilling the high-availability requirement.
 
-![Running Instances Proof](images/phase5_3.png)
+![Running Instances Proof](images/phase5_3.PNG)
