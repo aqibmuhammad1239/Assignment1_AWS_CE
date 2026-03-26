@@ -22,3 +22,12 @@ I verified the API functionality using a Python script (`fetch_events.py`) which
 
 ### VPC Resource Map
 ![VPC Resource Map](images/VPC_Resource_Map.PNG)
+## Phase 3: Secure Storage (S3)
+I have configured an Amazon S3 bucket to securely store university event posters and media.
+
+### Security Implementation
+* **Bucket Privacy**: "Block all public access" is enabled to ensure event data remains private.
+* **Access Control**: ACLs are disabled to enforce modern, policy-based access management.
+* **Storage Logic**: The bucket is prepared to receive image uploads from the private EC2 instances via the S3 Gateway Endpoint.
+
+![S3 Bucket Creation](images/S3_Bucket_Created.PNG)
