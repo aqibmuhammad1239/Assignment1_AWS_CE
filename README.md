@@ -78,7 +78,7 @@ In this phase, I implemented the data persistence layer for the UniEvent platfor
 ### 1. Database Subnet Group Configuration
 To ensure the database is highly available and isolated, I created a custom DB Subnet Group. This group restricts the database to the private subnets in two Availability Zones (eu-north-1a and eu-north-1b), ensuring it has no direct route to the public internet.
 
-![RDS Subnet Group Created](images/Screenshot_2026-03-29-00-00-57-718.jpg)
+![RDS Subnet Group Created](images/Screenshot_2026-03-29-00-00-57-718_com.android.chrome.jpg)
 
 ### 2. Database Instance Details
 I provisioned a MySQL 8.0 instance using the AWS Free Tier to manage event metadata efficiently.
@@ -93,9 +93,9 @@ The database follows the **"Principle of Least Privilege"**:
 * **VPC Security Group**: Assigned `UniEvent-App-SG`, which is configured to only allow inbound traffic on **Port 3306** from the application server tier.
 * **Multi-AZ**: Disabled for Free Tier compliance, but the architecture is ready for Multi-AZ failover in a production environment.
 
-![Database Creation Success](images/Screenshot_2026-03-29-00-21-47-575.jpg)
+![Database Creation Success](images/Screenshot_2026-03-29-00-21-47-575_com.android.chrome.jpg)
 
 ### 4. Final Deployment Status
 The database was successfully provisioned and is currently in the **Available** state, ready to receive connections from the Python backend worker.
 
-![RDS Dashboard Complete](images/Screenshot_2026-03-29-00-37-56-017.jpg)
+![RDS Dashboard Complete](images/Screenshot_2026-03-29-00-37-56-017_com.android.chrome.jpg)
