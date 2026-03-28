@@ -70,3 +70,32 @@ I configured an **Auto Scaling Group (ASG)** to manage the server cluster across
 The following image confirms that the Auto Scaling Group has successfully provisioned two healthy instances across different availability zones, fulfilling the high-availability requirement.
 
 ![Running Instances Proof](images/phase5_3.PNG)
+
+## Phase 6: Relational Database Service (RDS) Integration
+
+In this phase, I implemented the data persistence layer for the UniEvent platform. To ensure high security and reliability, I deployed a managed MySQL database within the private subnets of the UniEvent-VPC.
+
+### 1. Database Subnet Group Configuration
+To ensure the database is highly available and isolated, I created a custom DB Subnet Group. This group restricts the database to the private subnets in two Availability Zones (eu-north-1a and eu-north-1b), ensuring it has no direct route to the public internet.
+
+![RDS Subnet Group Created](images/Screenshot_2026-03-29-00-00-57-718.jpg)
+
+### 2. Database Instance Details
+I provisioned a MySQL 8.0 instance using the AWS Free Tier to manage event metadata efficiently.
+* **DB Identifier**: `unievent-db`
+* **Engine**: MySQL Community (8.0.x)
+* **Instance Class**: db.t3.micro (Free Tier)
+* **Storage**: 20GB General Purpose SSD (gp3)
+
+### 3. Security and Connectivity
+The database follows the **"Principle of Least Privilege"**:
+* **Public Access**: Disabled (Set to 'No').
+* **VPC Security Group**: Assigned `UniEvent-App-SG`, which is configured to only allow inbound traffic on **Port 3306** from the application server tier.
+* **Multi-AZ**: Disabled for Free Tier compliance, but the architecture is ready for Multi-AZ failover in a production environment.
+
+![Database Creation Success](images/Screenshot_2026-03-29-00-21-47-575.jpg)
+
+### 4. Final Deployment Status
+The database was successfully provisioned and is currently in the **Available** state, ready to receive connections from the Python backend worker.
+
+![RDS Dashboard Complete](images/Screenshot_2026-03-29-00-37-56-017.jpg)
