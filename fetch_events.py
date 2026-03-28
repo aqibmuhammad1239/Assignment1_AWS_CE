@@ -6,7 +6,7 @@ from datetime import datetime
 # --- CONFIGURATION () ---
 TICKETMASTER_API_KEY = 'bIaG4Q7G37594n81yVZj5lqyJTFXS0T6UR_API_KEY'
 S3_BUCKET_NAME = 'unievent-bucket-name' 
-RDS_HOST = 'unievent-db.xxxx.eu-north-1.rds.amazonaws.com' 
+RDS_HOST = 'unievent-db.cz4k0uq606lh.eu-north-1.rds.amazonaws.com' 
 RDS_USER = 'admin'
 RDS_PASS = 'YourDatabasePassword'
 RDS_NAME = 'unievent_db'
